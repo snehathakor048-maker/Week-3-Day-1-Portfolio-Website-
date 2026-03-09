@@ -1,0 +1,202 @@
+/* =============================
+   DESIGN TOKENS (ROOT VARIABLES)
+============================= */
+
+:root{
+
+--bg-surface:#0c0f1a;
+--bg-card:#12172a;
+
+--text-primary:#ffffff;
+--text-muted:#b9c1d9;
+
+--brand-accent:#4da3ff;
+
+--radius:0.6rem;
+
+--space-sm:0.5rem;
+--space-md:1rem;
+--space-lg:2rem;
+--space-xl:4rem;
+
+--container-width:65ch;
+
+}
+
+
+/* =============================
+GLOBAL RESET
+============================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:"Inter",sans-serif;
+background:var(--bg-surface);
+color:var(--text-primary);
+
+}
+
+
+/* =============================
+HERO SECTION
+============================= */
+
+.hero{
+
+min-height:90dvh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+text-align:center;
+
+padding:var(--space-lg);
+
+position:relative;
+
+background:
+radial-gradient(circle at 20% 20%, rgba(77,163,255,0.2), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(77,163,255,0.2), transparent 40%),
+var(--bg-surface);
+
+}
+
+
+/* HERO CONTENT */
+
+.hero-container{
+
+max-width:var(--container-width);
+
+display:flex;
+flex-direction:column;
+gap:var(--space-md);
+
+align-items:center;
+
+}
+
+
+/* FLUID TYPOGRAPHY */
+
+.hero-title{
+
+font-weight:800;
+
+line-height:1.1;
+
+text-wrap:balance;
+
+font-size:clamp(2rem,6vw,4rem);
+
+}
+
+
+/* BIO TEXT */
+
+.hero-bio{
+
+color:var(--text-muted);
+
+font-size:clamp(1rem,2vw,1.3rem);
+
+max-width:50ch;
+
+}
+
+
+/* CTA BUTTON */
+
+.hero-btn{
+
+margin-top:var(--space-md);
+
+padding:0.8em 1.8em;
+
+background:var(--brand-accent);
+
+border-radius:var(--radius);
+
+text-decoration:none;
+
+color:white;
+
+font-weight:600;
+
+transition:transform 0.25s ease;
+
+}
+
+.hero-btn:hover{
+
+transform:translateY(-0.3rem);
+
+}
+
+
+/* =============================
+SCROLL INDICATOR
+============================= */
+
+.scroll-indicator{
+
+position:absolute;
+
+bottom:2rem;
+
+width:1.5rem;
+height:2.5rem;
+
+border:2px solid var(--text-muted);
+
+border-radius:1rem;
+
+}
+
+.scroll-indicator::after{
+
+content:"";
+
+width:0.3rem;
+height:0.6rem;
+
+background:var(--text-muted);
+
+position:absolute;
+
+left:50%;
+top:20%;
+
+transform:translateX(-50%);
+
+border-radius:0.2rem;
+
+animation:scroll 2s infinite;
+
+}
+
+
+@keyframes scroll{
+
+0%{
+opacity:0;
+transform:translate(-50%,0);
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+transform:translate(-50%,0.7rem);
+}
+
+}
