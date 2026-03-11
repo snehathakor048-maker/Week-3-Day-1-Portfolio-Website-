@@ -1,32 +1,23 @@
-/* =============================
-   DESIGN TOKENS (ROOT VARIABLES)
-============================= */
-
 :root{
 
---bg-surface:#0c0f1a;
---bg-card:#12172a;
+--bg-main:#0b0f1a;
+--bg-glass:rgba(255,255,255,0.08);
 
---text-primary:#ffffff;
---text-muted:#b9c1d9;
+--text-main:#ffffff;
+--text-muted:#b8c0da;
 
---brand-accent:#4da3ff;
-
---radius:0.6rem;
+--accent:#4da3ff;
 
 --space-sm:0.5rem;
 --space-md:1rem;
 --space-lg:2rem;
 --space-xl:4rem;
 
---container-width:65ch;
+--radius:0.6rem;
 
 }
 
-
-/* =============================
-GLOBAL RESET
-============================= */
+/* RESET */
 
 *{
 margin:0;
@@ -37,15 +28,91 @@ box-sizing:border-box;
 body{
 
 font-family:"Inter",sans-serif;
-background:var(--bg-surface);
-color:var(--text-primary);
+background:var(--bg-main);
+color:var(--text-main);
 
 }
 
 
-/* =============================
-HERO SECTION
-============================= */
+/* CONTAINER */
+
+.container{
+
+width:90%;
+max-width:1100px;
+margin:auto;
+
+}
+
+
+/* NAVBAR (DAY2)  */
+
+.site-header{
+
+position:sticky;
+top:0;
+z-index:10;
+
+backdrop-filter:blur(12px);
+background:var(--bg-glass);
+
+border-bottom:1px solid rgba(255,255,255,0.1);
+
+}
+
+.nav{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:1rem 0;
+
+}
+
+.logo{
+
+font-weight:700;
+
+}
+
+.nav-menu{
+
+display:flex;
+gap:2rem;
+
+list-style:none;
+
+}
+
+.nav-menu a{
+
+text-decoration:none;
+color:var(--text-main);
+
+}
+
+.nav-toggle{
+
+display:none;
+flex-direction:column;
+gap:5px;
+background:none;
+border:none;
+cursor:pointer;
+
+}
+
+.nav-toggle span{
+
+width:25px;
+height:3px;
+background:white;
+
+}
+
+
+/*  HERO=*/
 
 .hero{
 
@@ -57,146 +124,135 @@ justify-content:center;
 
 text-align:center;
 
-padding:var(--space-lg);
-
-position:relative;
-
-background:
-radial-gradient(circle at 20% 20%, rgba(77,163,255,0.2), transparent 40%),
-radial-gradient(circle at 80% 70%, rgba(77,163,255,0.2), transparent 40%),
-var(--bg-surface);
-
 }
 
+.hero-content{
 
-/* HERO CONTENT */
-
-.hero-container{
-
-max-width:var(--container-width);
+max-width:60ch;
 
 display:flex;
 flex-direction:column;
-gap:var(--space-md);
-
-align-items:center;
+gap:1rem;
 
 }
 
+.hero h1{
 
-/* FLUID TYPOGRAPHY */
-
-.hero-title{
-
-font-weight:800;
-
-line-height:1.1;
-
-text-wrap:balance;
-
-font-size:clamp(2rem,6vw,4rem);
+font-size:clamp(2rem,5vw,4rem);
 
 }
 
-
-/* BIO TEXT */
-
-.hero-bio{
+.hero p{
 
 color:var(--text-muted);
 
-font-size:clamp(1rem,2vw,1.3rem);
-
-max-width:50ch;
-
 }
 
+.btn-primary{
 
-/* CTA BUTTON */
+background:var(--accent);
+color:white;
 
-.hero-btn{
-
-margin-top:var(--space-md);
-
-padding:0.8em 1.8em;
-
-background:var(--brand-accent);
+padding:0.8em 1.6em;
 
 border-radius:var(--radius);
 
 text-decoration:none;
 
-color:white;
-
-font-weight:600;
-
-transition:transform 0.25s ease;
-
-}
-
-.hero-btn:hover{
-
-transform:translateY(-0.3rem);
+width:max-content;
+margin:auto;
 
 }
 
 
-/* =============================
-SCROLL INDICATOR
-============================= */
+/*  GRID (DAY3)  */
 
-.scroll-indicator{
+.about{
+
+padding:4rem 0;
+
+}
+
+.about h2{
+
+text-align:center;
+margin-bottom:2rem;
+
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:1rem;
+
+}
+
+.tile{
+
+background:rgba(255,255,255,0.05);
+
+padding:1.5rem;
+
+border-radius:var(--radius);
+
+}
+
+.bio{
+
+grid-column:span 2;
+grid-row:span 2;
+
+}
+
+.tech{
+
+grid-column:span 2;
+
+}
+
+.small{
+
+grid-column:span 1;
+
+}
+
+
+/* MOBILE  */
+
+@media (max-width:768px){
+
+.nav-menu{
 
 position:absolute;
+top:70px;
+right:0;
 
-bottom:2rem;
+flex-direction:column;
 
-width:1.5rem;
-height:2.5rem;
+background:#111;
+width:200px;
 
-border:2px solid var(--text-muted);
+padding:2rem;
 
-border-radius:1rem;
-
-}
-
-.scroll-indicator::after{
-
-content:"";
-
-width:0.3rem;
-height:0.6rem;
-
-background:var(--text-muted);
-
-position:absolute;
-
-left:50%;
-top:20%;
-
-transform:translateX(-50%);
-
-border-radius:0.2rem;
-
-animation:scroll 2s infinite;
+display:none;
 
 }
 
-
-@keyframes scroll{
-
-0%{
-opacity:0;
-transform:translate(-50%,0);
+.nav-menu.active{
+display:flex;
 }
 
-50%{
-opacity:1;
+.nav-toggle{
+display:flex;
 }
 
-100%{
-opacity:0;
-transform:translate(-50%,0.7rem);
+.grid{
+
+grid-template-columns:1fr;
+
 }
 
 }
