@@ -1,4 +1,12 @@
-// Portfolio Week 3
-// Day 1 Foundation
+const toggle = document.querySelector(".nav-toggle");
+const menu = document.querySelector(".nav-menu");
 
-console.log("Portfolio system initialized");
+toggle.addEventListener("click",()=>{
+
+menu.classList.toggle("active");
+
+const expanded = toggle.getAttribute("aria-expanded") === "true";
+
+toggle.setAttribute("aria-expanded",!expanded);
+
+});
