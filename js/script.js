@@ -1,12 +1,13 @@
-const toggle = document.querySelector(".nav-toggle");
-const menu = document.querySelector(".nav-menu");
+const toggle = document.getElementById("navToggle");
+const menu = document.getElementById("navMenu");
 
-toggle.addEventListener("click",()=>{
+toggle.addEventListener("click", () => {
 
 menu.classList.toggle("active");
 
-const expanded = toggle.getAttribute("aria-expanded") === "true";
+const expanded =
+toggle.getAttribute("aria-expanded") === "true";
 
-toggle.setAttribute("aria-expanded",!expanded);
+toggle.setAttribute("aria-expanded", !expanded);
 
 });
